@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="style_game.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https: //fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Honk&display=swap" rel="stylesheet">
+
+</head>
+
+
+
+
+<body>
+
+    <img src="skibidi.jpg" style="width: 1585px; height: 800px; border: 0px;" onclick="kliknieto()"></img>
+      
+	    <div class="poj" id="piwo"></div>
+		<div class="poj" id="czas"></div>
+		<div class="poj" id="mnognig" onclick="przycisk_upg()">KLIKNIJ ABY ULEPSZYĆ<button></button><div id="obw">masz:</div></div>
+	 
+</body>
+
+
+
+
+<script>
+zegar();
+zmien_mng();
+  var punkty = 0;
+  var mnorznik = 1;
+  var tajm = 100;
+  var ilosc_ulp = 0;
+  var dzwiek = new Audio("sound.mp3");
+
+function kliknieto(){
+  punkty += mnorznik;
+  document.getElementById("piwo").innerHTML = "ilość piwa: "+"</br>"+"🍺 "+punkty.toFixed(2)+"</br>"+"<label for='lol'></label>"+"<progress id='lol' value="+punkty+" max='50'></progress>";
+  
+}
+
+  
+function przycisk_upg(){
+  if (punkty >= 50){
+    mnorznik = mnorznik*1.1;
+    punkty -= 50;
+	ilosc_ulp++;
+	zmien_mng();
+	dzwiek.play();
+  }
+}
+function zegar() {
+  if (tajm != 0) {
+    tajm--;
+    document.getElementById("czas").innerHTML = "zostało ci "+tajm+" sekund!";
+    setTimeout("zegar()", 1000);
+   } else {
+     alert("koniec gry! uzyskałeś "+ilosc_ulp+" punktów");
+	 location.href = "index.html";
+   }
+}
+function zmien_mng() {
+  document.getElementById("obw").innerHTML = "obecne piwo za kliknięcie: "+mnorznik;
+
+}
+</script>
+</html>
